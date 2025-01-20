@@ -16,7 +16,7 @@ import NearByPlaces from '../../components/offer-near-by-places/offer-near-by-pl
 import { convertToOfferPreview, prepareReviews } from '../../utils/utils';
 import PageNotFoundPage from '../not-found-page/not-found-page';
 
-export default function OfferPage(): JSX.Element {
+function OfferPage(): JSX.Element {
   const dispatch = useAppDispatch();
   const isOfferDataLoading = useAppSelector(selectIsOfferDataLoading);
 
@@ -117,3 +117,6 @@ export default function OfferPage(): JSX.Element {
     </div>
   );
 }
+
+
+export default OfferPage;
