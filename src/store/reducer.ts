@@ -1,6 +1,6 @@
-import { createReducer } from '@reduxjs/toolkit';
+import { createReducer, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { changeCity, requireAuthorization, setComments, setCurrentUser, setIsCommentPostingError, setIsCommentsFetchingError, setIsOffersError, setNearByOffers, setOffer, setOffers, setSotringType } from './action';
-import { OfferPreviewType } from '../types/offer-type';
+import { OfferPreviewType, OfferType } from '../types/offer-type';
 import CITIES_MAP from '../data/cities';
 import { AuthorizationStatus, SortItem } from '../components/consts';
 import { fetchComments, fetchNearByOffers, fetchOffer, fetchOffers } from './action-api';
@@ -26,11 +26,24 @@ const initialState: StateType = {
   isCommentPostingError: false,
 };
 
+const appSlice = createSlice({
+  name: 'appSlice',
+  initialState,
+  reducers: {
+    setOffers: (state, action: PayloadAction<OfferPreviewType[]>) => {
+      state.offers = action.payload;
+    }
+  },
+  extraReducers: (builder) =>{
+    builder.addCase
+  }
+
+});
+
+
+
 const reducer = createReducer(initialState, (builder)=>{
   builder
-    .addCase(setOffers, (state, action) => {
-      state.offers = action.payload;
-    })
     .addCase(setComments, (state, action) => {
       state.comments = action.payload;
     })
